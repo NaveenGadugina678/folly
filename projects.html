@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Alex Rivera</title>
+  <meta name="description" content="All projects built by Alex Rivera." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">Naveen Gadugina</a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+        <a href="assets/cv/cv.pdf" download class="nav-cv-btn">Download CV</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== PAGE HEADER ===================== -->
+    <section class="section page-header">
+      <a href="index.html#projects" class="back-link reveal">&larr; Back to home</a>
+      <h1 class="page-heading reveal">All My Projects</h1>
+      <p class="page-subheading reveal">
+        Everything I've built so far, big and small. New projects get added here as I finish them.
+      </p>
+    </section>
+
+    <!-- ===================== ALL PROJECTS ===================== -->
+    <section class="section projects projects-all">
+      <div class="project-grid">
+
+        <!-- Project card — copy this block and edit the content to add a new project.
+             This grid grows as you add more cards; no other changes needed. -->
+        <article class="project-card reveal">
+          <div class="project-visual project-visual--blue">
+            <span class="project-visual-emoji">🗂️</span>
+          </div>
+          <h3 class="project-name">Project One</h3>
+          <p class="project-description">
+            A short, plain-language description of what this project does and why you built it.
+          </p>
+          <div class="project-tech">
+            <span class="mini-tag">JavaScript</span>
+            <span class="mini-tag">CSS</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-outline">GitHub</a>
+            <a href="#" class="btn btn-outline">Live Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-visual project-visual--peach">
+            <span class="project-visual-emoji">🚀</span>
+          </div>
+          <h3 class="project-name">Project Two</h3>
+          <p class="project-description">
+            A short, plain-language description of what this project does and why you built it.
+          </p>
+          <div class="project-tech">
+            <span class="mini-tag">Python</span>
+            <span class="mini-tag">Flask</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-outline">GitHub</a>
+            <a href="#" class="btn btn-outline">Live Demo</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-visual project-visual--yellow">
+            <span class="project-visual-emoji">🎮</span>
+          </div>
+          <h3 class="project-name">Project Three</h3>
+          <p class="project-description">
+            A short, plain-language description of what this project does and why you built it.
+          </p>
+          <div class="project-tech">
+            <span class="mini-tag">C++</span>
+            <span class="mini-tag">SDL2</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="btn btn-outline">GitHub</a>
+            <a href="#" class="btn btn-outline">Live Demo</a>
+          </div>
+        </article>
+
+        <!--
+          Add future projects by pasting a new <article class="project-card reveal"> block here.
+          Cycle through project-visual--blue / --peach / --yellow for the icon background,
+          and pick any emoji you like for project-visual-emoji.
+        -->
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Alex Rivera</p>
+      <p class="footer-tagline">Built with curiosity &amp; code.</p>
+      <div class="footer-links">
+        <a href="https://github.com/alexrivera" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/alexrivera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:hello@alexrivera.dev">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
