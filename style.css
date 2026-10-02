@@ -566,6 +566,7 @@ button:focus-visible {
 .project-visual--blue { background: var(--blue); }
 .project-visual--peach { background: var(--peach); }
 .project-visual--yellow { background: var(--yellow); }
+.project-visual--coral { background: var(--coral); }
 
 .project-name {
   font-size: 1.25rem;
