@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interests — Naveen Gadugina</title>
+  <meta name="description" content="Photography by Naveen Gadugina." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ---------- Interests page extras (uses tokens from style.css) ---------- */
+    .photo-intro { max-width: 56ch; margin: 0 auto; color: var(--text-soft); }
+
+    .subject-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .photo-card {
+      background: var(--background);
+      border: 3px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 14px 18px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+    }
+    .photo-card:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: var(--shadow-lg); }
+    .photo-card:nth-child(even):hover { transform: translateY(-6px) rotate(1deg); }
+
+    .photo-frame {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border: 3px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+    }
+    .photo-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-frame--blue { background: var(--blue); }
+    .photo-frame--peach { background: var(--peach); }
+    .photo-frame--yellow { background: var(--yellow); }
+    .photo-frame--coral { background: var(--coral); }
+
+    .photo-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin: 14px 0 4px; }
+    .photo-meta { color: var(--text-soft); font-size: 0.88rem; }
+
+    /* ---------- Lightbox ---------- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(17, 17, 17, 0.8);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-box {
+      position: relative;
+      max-width: min(920px, 100%);
+      max-height: 100%;
+      background: var(--background);
+      border: 3px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      box-shadow: var(--shadow-lg);
+    }
+    .lightbox-box img {
+      max-height: 72vh;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: var(--radius-sm);
+    }
+    .lightbox-caption { text-align: center; font-weight: 600; margin-top: 12px; }
+    .lightbox-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--coral);
+      color: #FEFEFF;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) { .lightbox-close { top: -12px; right: -6px; } }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="logo">Naveen Gadugina</a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="interests.html" class="nav-link" aria-current="page">Interests</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+        <a href="assets/cv/cv.pdf" download class="nav-cv-btn">Download CV</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== PAGE HEADER ===================== -->
+    <section class="section page-header">
+      <a href="index.html" class="back-link reveal">&larr; Back to home</a>
+      <h1 class="page-heading reveal">Through My Lens 📸</h1>
+      <p class="photo-intro reveal">
+        When I'm not writing code, I'm out with a camera. Here are a few frames I'm proud of.
+      </p>
+      <ul class="subject-tags reveal">
+        <!-- Edit these to match what you shoot -->
+        <li class="tag tag--blue">Landscapes</li>
+        <li class="tag tag--peach">Street</li>
+        <li class="tag tag--yellow">Nature</li>
+        <li class="tag tag--coral">Campus life</li>
+      </ul>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="section projects projects-all">
+      <div class="gallery">
+
+        <!-- Photo card — copy this block to add a photo.
+             1. Put the image in assets/photos/
+             2. Change src, alt, title and meta text
+             3. Cycle photo-frame--blue / --peach / --yellow / --coral (shows behind the image while it loads) -->
+        <button class="photo-card reveal" type="button" data-full="assets/photos/photo-1.jpg" data-caption="Photo title 1">
+          <div class="photo-frame photo-frame--blue">
+            <span aria-hidden="true">🌄</span>
+            <img src="assets/photos/photo-1.jpg" alt="Describe photo 1 here" loading="lazy" onerror="this.remove()">
+          </div>
+          <h3 class="photo-title">Photo title 1</h3>
+          <p class="photo-meta">Place, month year</p>
+        </button>
+
+        <button class="photo-card reveal" type="button" data-full="assets/photos/photo-2.jpg" data-caption="Photo title 2">
+          <div class="photo-frame photo-frame--peach">
+            <span aria-hidden="true">🌆</span>
+            <img src="assets/photos/photo-2.jpg" alt="Describe photo 2 here" loading="lazy" onerror="this.remove()">
+          </div>
+          <h3 class="photo-title">Photo title 2</h3>
+          <p class="photo-meta">Place, month year</p>
+        </button>
+
+        <button class="photo-card reveal" type="button" data-full="assets/photos/photo-3.jpg" data-caption="Photo title 3">
+          <div class="photo-frame photo-frame--yellow">
+            <span aria-hidden="true">🌿</span>
+            <img src="assets/photos/photo-3.jpg" alt="Describe photo 3 here" loading="lazy" onerror="this.remove()">
+          </div>
+          <h3 class="photo-title">Photo title 3</h3>
+          <p class="photo-meta">Place, month year</p>
+        </button>
+
+        <button class="photo-card reveal" type="button" data-full="assets/photos/photo-4.jpg" data-caption="Photo title 4">
+          <div class="photo-frame photo-frame--coral">
+            <span aria-hidden="true">🌅</span>
+            <img src="assets/photos/photo-4.jpg" alt="Describe photo 4 here" loading="lazy" onerror="this.remove()">
+          </div>
+          <h3 class="photo-title">Photo title 4</h3>
+          <p class="photo-meta">Place, month year</p>
+        </button>
+
+        <button class="photo-card reveal" type="button" data-full="assets/photos/photo-5.jpg" data-caption="Photo title 5">
+          <div class="photo-frame photo-frame--blue">
+            <span aria-hidden="true">🏛️</span>
+            <img src="assets/photos/photo-5.jpg" alt="Describe photo 5 here" loading="lazy" onerror="this.remove()">
+          </div>
+          <h3 class="photo-title">Photo title 5</h3>
+          <p class="photo-meta">Place, month year</p>
+        </button>
+
+        <button class="photo-card reveal" type="button" data-full="assets/photos/photo-6.jpg" data-caption="Photo title 6">
+          <div class="photo-frame photo-frame--peach">
+            <span aria-hidden="true">🌙</span>
+            <img src="assets/photos/photo-6.jpg" alt="Describe photo 6 here" loading="lazy" onerror="this.remove()">
+          </div>
+          <h3 class="photo-title">Photo title 6</h3>
+          <p class="photo-meta">Place, month year</p>
+        </button>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="lightbox-box">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close photo">&times;</button>
+      <img id="lightboxImg" src="" alt="" />
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-name">Naveen Gadugina</p>
+      <p class="footer-tagline">Built with curiosity &amp; code.</p>
+      <div class="footer-links">
+        <a href="https://github.com/NaveenGadugina678" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/naveen-gadugina" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:naveeng99022@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Lightbox: click a photo to view it larger; Esc, the X, or a click outside closes it
+    (function () {
+      const box = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      let lastCard = null;
+
+      function open(card) {
+        lastCard = card;
+        img.src = card.dataset.full;
+        img.alt = card.querySelector('img') ? card.querySelector('img').alt : '';
+        cap.textContent = card.dataset.caption || '';
+        box.classList.add('open');
+        document.getElementById('lightboxClose').focus();
+      }
+      function close() {
+        box.classList.remove('open');
+        img.src = '';
+        if (lastCard) lastCard.focus();
+      }
+
+      document.querySelectorAll('.photo-card').forEach((c) => c.addEventListener('click', () => open(c)));
+      document.getElementById('lightboxClose').addEventListener('click', close);
+      box.addEventListener('click', (e) => { if (e.target === box) close(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
+    })();
+  </script>
+</body>
+</html>
