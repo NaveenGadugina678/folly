@@ -309,6 +309,15 @@ button:focus-visible {
   background: var(--blue);
   border-radius: 58% 42% 63% 37% / 41% 51% 49% 59%;
   animation: float-slow 7s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.art-molecule {
+  width: 75%;
+  height: auto;
+  mix-blend-mode: multiply;
 }
 
 .art-circle {
